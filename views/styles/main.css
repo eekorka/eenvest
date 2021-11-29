@@ -1,0 +1,53 @@
+h2 {
+  text-align: center;
+}
+
+table {
+  margin: auto;
+  border: 2px solid black;
+}
+
+.stats td {
+  width: 100px;
+}
+
+caption {
+  border: 2px solid black;
+  font-weight: 600;
+}
+
+td {
+  text-align: center;
+}
+
+table tr:nth-child(odd) {
+  background: #fff;
+}
+
+table tr:nth-child(even) {
+  background: #c9c9c9;
+}
+
+.timestamp {
+  text-align: center;
+}
+
+.statusGreen {
+  background: #15ff005d;
+}
+
+.statusRed {
+  background: #ff000054;
+}
+
+.green {
+  background: #00ff15;
+}
+
+.yellow {
+  background: #fbff00;
+}
+
+.red {
+  background: #ff0000;
+}
