@@ -4,7 +4,8 @@ const { Schema } = mongoose
 const sessionSchema = new Schema({
   createdAt: Date,
   username: String,
-  platform: String
+  os: String,
+  browser: String
 }, {collection: 'sessions'})
 
 const Session = mongoose.model('Session', sessionSchema)

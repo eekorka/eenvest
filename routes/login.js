@@ -3,6 +3,7 @@ const router = express.Router()
 
 const bcrypt = require('bcrypt')
 const Cryptr = require('cryptr')
+const uaParser = require('ua-parser-js')
 
 const connectToMongoDB = require('../db/connection')
 const User = require('../db/models/User')
@@ -38,7 +39,8 @@ router.post('/login', (req ,res) => {
           const session = new Session({
             createdAt: new Date(Date.now() + 10800000),
             username: user.username,
-            platform: req.headers['sec-ch-ua-platform']
+            os: uaParser(req.headers['user-agent']).os.name,
+            browser: uaParser(req.headers['user-agent']).browser.name
           })
           session.save((err) => {
             res.cookie('cooka', session._id, {expires: new Date(Date.now() + (60000 * 60 * 2))}).redirect('/')
