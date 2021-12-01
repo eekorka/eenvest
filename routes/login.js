@@ -37,7 +37,7 @@ router.post('/login', (req ,res) => {
 
         if (result === true) {
           const session = new Session({
-            createdAt: new Date(Date.now() + 10800000),
+            createdAt: new Date(),
             username: user.username,
             os: uaParser(req.headers['user-agent']).os.name,
             browser: uaParser(req.headers['user-agent']).browser.name
