@@ -51,3 +51,7 @@ table tr:nth-child(even) {
 .red {
   background: #ff0000;
 }
+
+form {
+  text-align: right;
+}

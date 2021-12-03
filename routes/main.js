@@ -221,7 +221,7 @@ router.get('/', auth, token, (req, res) => {
     let stats = getStats([etfsUSD, etfsRUB], dollar, otherOperations)
     let timestamp = getTimestamp()
 
-    res.render('index', {dollar, etfsUSD, etfsRUB, stats, timestamp})
+    res.render('main', {dollar, etfsUSD, etfsRUB, stats, timestamp})
   }
 
   app()

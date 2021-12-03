@@ -1,15 +1,15 @@
 const express = require('express')
+const helmet = require('helmet')
+const cookieParser = require('cookie-parser')
 
 const app = express()
-
-const cookieParser = require('cookie-parser')
 
 require('dotenv').config()
 
 app.set('view engine', 'pug')
 
+app.use(helmet())
 app.use(express.urlencoded({extended: true}))
-
 app.use(cookieParser())
 
 app.use(require('./routes/main'))

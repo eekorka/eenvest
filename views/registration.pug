@@ -1,21 +1,20 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
-  body 
-    h2= 'register'
-    form(action='/registration' method='post')
-      div
-        label='username'
-        input(type='text' name='username')
-      div
-        label='password'
-        input(type='password' name='password')
-      div
-        label='token'
-        input(type='text' name='token')
-      div 
-        input(type='submit')
+extends index.pug
+
+block styles 
+  style 
+    include styles/registration.css
+
+block content
+  h2= 'register'
+  form(action='/registration' method='post')
+    div
+      label='username'
+      input(type='text' name='username' required)
+    div
+      label='password'
+      input(type='password' name='password' required)
+    div
+      label='token'
+      input(type='text' name='token' required)
+    div 
+      input(type='submit')

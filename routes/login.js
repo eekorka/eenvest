@@ -62,8 +62,9 @@ router.post('/registration', async (req, res) => {
 
   const user = new User({
     username: req.body.username,
-    password: await bcrypt.hash(req.body.password, process.env.SALT),
-    token: cryptr.encrypt(req.body.token)
+    password: await bcrypt.hash(req.body.password, 11),
+    token: cryptr.encrypt(req.body.token),
+    regDate: new Date()
   })
 
   user.save()
@@ -75,7 +76,7 @@ router.get('/logout', (req, res) => {
   connectToMongoDB()
   Session.deleteOne({_id: req.cookies.cooka}, (error) => {
     if (error) {
-      console.log(error);
+      console.log(error)
     }
   })
   res.clearCookie('cooka').redirect('/login')
