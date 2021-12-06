@@ -10,7 +10,10 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": {
+    "name": "Egor Kornyushin",
+    "email": "eekorka@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "@tinkoff/invest-openapi-js-sdk": "^1.5.0",

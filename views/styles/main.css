@@ -1,23 +1,34 @@
-h2 {
-  text-align: center;
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 815px;
+  max-width: 1100px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 815px;
+  max-width: 1100px;
+}
+
+.timestamp {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 table {
-  margin: auto;
-  border: 2px solid black;
-}
-
-.stats td {
-  width: 100px;
-}
-
-caption {
-  border: 2px solid black;
-  font-weight: 600;
-}
-
-td {
+  width: 100%;
   text-align: center;
+  border: 2px solid black;
+}
+
+table tr {
+  height: 50px;
 }
 
 table tr:nth-child(odd) {
@@ -26,10 +37,6 @@ table tr:nth-child(odd) {
 
 table tr:nth-child(even) {
   background: #c9c9c9;
-}
-
-.timestamp {
-  text-align: center;
 }
 
 .statusGreen {
@@ -50,8 +57,4 @@ table tr:nth-child(even) {
 
 .red {
   background: #ff0000;
-}
-
-form {
-  text-align: right;
 }

@@ -1,7 +1,29 @@
-h2 {
-  text-align: center;
+.registration {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-form {
-  text-align: center;
+.registration form {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration form .field {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.registration form .button {
+  margin-top: 20px;
+}
+
+.registration form .button input {
+  width: 150px;
+  height: 30px;
 }

@@ -6,118 +6,115 @@ block styles
 
 block content
   header
-    form(action='/logout' method='get')
-      input(type='submit' value='Logout')
     h2= 'eenvest'
+    form(action='/logout' method='get')
+      input(type='submit' value='Выйти')
+
+  main
     p.timestamp= timestamp.time + ' ' + timestamp.date
-
-  table.stats
-    caption= 'Total Stats, RUB'
-    tr 
-      th= 'Invested'
-      th= 'Profit'
-      th= 'Real Profit'
-      th= 'PayOut'
-      th= 'Commission'
-      th= 'Tax'
-    tr 
-      td= stats.totalInvested
-      td= stats.totalProfit
-      if stats.totalRealProfit >= 0
-        td.green= stats.totalRealProfit
-      else if stats.totalRealProfit < 0
-        td.red= stats.totalRealProfit
-      else 
-        td= stats.totalRealProfit
-      td= stats.totalPayOut
-      td= stats.totalCommission
-      td= stats.totalTax
-
-  br
-
-  table
-    caption= 'USD'
-    tr 
-      th= 'Now'
-      th= 'Average Buying Price'
-      th= 'Average Selling Price'
-      th= 'Commission'
-    tr
-      if dollar.priceNow >= dollar.averageBuyingPrice
-        td.green= dollar.priceNow
-      else if dollar.priceNow < dollar.averageBuyingPrice
-        td.red= dollar.priceNow 
-      else
-        td= dollar.priceNow
-      td= dollar.averageBuyingPrice
-      td= dollar.averageSellingPrice
-      td= dollar.brokerCommission
-
-  br
-
-  table
-    caption= 'Etfs, USD'
-    tr
-      th= 'Name'
-      th= 'Currency'
-      th= 'Invested'
-      th= 'Total Cost Now'
-      th= 'Profit'
-      th= 'Ruble Profit'
-      th= 'Real Profit'
-      th= 'Commission'
-    each etf in etfsUSD        
-      tr
-        if etf.tradeStatus === 'NotAvailableForTrading'
-          td.statusRed= etf.name
-        else if etf.tradeStatus === 'NormalTrading'
-          td.statusGreen= etf.name
-        else
-          td= etf.name
-        td= etf.currency
-        td= etf.invested
-        td= etf.totalCostNow
-        td= etf.profit
-        td= etf.profitRUB
-        if etf.realProfit >= 1000
-          td.green= etf.realProfit
-        else if etf.realProfit >= 0
-          td.yellow= etf.realProfit
-        else if etf.realProfit < 0
-          td.red= etf.realProfit
-        else
-          td= etf.realProfit
-        td= etf.brokerCommission
-
-
-  br
-
-  table
-    caption= 'Etfs, RUB'
-    tr
-      th= 'Name'
-      th= 'Currency'
-      th= 'Invested'
-      th= 'Total Price Now'
-      th= 'Real Profit'
-      th= 'Commission'
-    each etf in etfsRUB      
-      tr
-        if etf.tradeStatus === 'NotAvailableForTrading'
-          td.statusRed= etf.name
-        else if etf.tradeStatus === 'NormalTrading'
-          td.statusGreen= etf.name
+    table.stats
+      caption= 'Общая информация, RUB'
+      tr 
+        th= 'Инвестировано'
+        th= 'Прибыль'
+        th= 'Реальная прибыль'
+        th= 'Выведено'
+        th= 'Комиссия'
+        th= 'Налог'
+      tr 
+        td= stats.totalInvested
+        td= stats.totalProfit
+        if stats.totalRealProfit >= 0
+          td.green= stats.totalRealProfit
+        else if stats.totalRealProfit < 0
+          td.red= stats.totalRealProfit
         else 
-          td= etf.name
-        td= etf.currency
-        td= etf.invested
-        td= etf.totalCostNow
-        if etf.realProfit >= 1000
-          td.green= etf.realProfit
-        else if etf.realProfit >= 0
-          td.yellow= etf.realProfit
-        else if etf.realProfit < 0
-          td.red= etf.realProfit
+          td= stats.totalRealProfit
+        td= stats.totalPayOut
+        td= stats.totalCommission
+        td= stats.totalTax
+
+    br
+
+    table.usd
+      caption= 'USD'
+      tr 
+        th= 'Цена сейчас'
+        th= 'Средняя цена покупки'
+        th= 'Средняя цена продажи'
+        th= 'Комиссия, RUB'
+      tr
+        if dollar.priceNow >= dollar.averageBuyingPrice
+          td.green= dollar.priceNow
+        else if dollar.priceNow < dollar.averageBuyingPrice
+          td.red= dollar.priceNow 
         else
-          td= etf.realProfit
-        td= etf.brokerCommission
+          td= dollar.priceNow
+        td= dollar.averageBuyingPrice
+        td= dollar.averageSellingPrice
+        td= dollar.brokerCommission
+
+    br
+
+    table.etfsUSD
+      caption= 'Etfs, USD'
+      tr
+        th.name= 'Наименование'
+        th= 'Инвестировано, USD'
+        th= 'Стоимость сейчас, USD'
+        th= 'Прибыль, USD'
+        th= 'Прибыль, RUB'
+        th= 'Реальная прибыль, RUB'
+        th= 'Комиссия, RUB'
+      each etf in etfsUSD        
+        tr
+          if etf.tradeStatus === 'NotAvailableForTrading'
+            td.statusRed= etf.name
+          else if etf.tradeStatus === 'NormalTrading'
+            td.statusGreen= etf.name
+          else
+            td= etf.name
+          td= etf.invested
+          td= etf.totalCostNow
+          td= etf.profit
+          td= etf.profitRUB
+          if etf.realProfit >= 1000
+            td.green= etf.realProfit
+          else if etf.realProfit >= 0
+            td.yellow= etf.realProfit
+          else if etf.realProfit < 0
+            td.red= etf.realProfit
+          else
+            td= etf.realProfit
+          td= etf.brokerCommission
+
+
+    br
+
+    table.etfsRUB
+      caption= 'Etfs, RUB'
+      tr
+        th.name= 'Наименование'
+        th= 'Инвестировано, RUB'
+        th= 'Стоимость сейчас, RUB'
+        th= 'Реальная прибыль, RUB'
+        th= 'Комиссия, RUB'
+      each etf in etfsRUB      
+        tr
+          if etf.tradeStatus === 'NotAvailableForTrading'
+            td.statusRed= etf.name
+          else if etf.tradeStatus === 'NormalTrading'
+            td.statusGreen= etf.name
+          else 
+            td= etf.name
+          td= etf.invested
+          td= etf.totalCostNow
+          if etf.realProfit >= 1000
+            td.green= etf.realProfit
+          else if etf.realProfit >= 0
+            td.yellow= etf.realProfit
+          else if etf.realProfit < 0
+            td.red= etf.realProfit
+          else
+            td= etf.realProfit
+          td= etf.brokerCommission

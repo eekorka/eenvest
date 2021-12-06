@@ -5,15 +5,17 @@ block styles
     include styles/login.css
 
 block content
-  h2= 'login'
-  form(action='/login' method='post')
-    div
-      label='username'
-      input(type='text' name='username' required)
-    div
-      label='password'
-      input(type='password' name='password' required)
-    div 
-      input(type='submit' value='Submit')
-  form(action='/registration' method='get')
-    input(type='submit' value='Registration')
+  div.login
+    h2= 'Вход в систему'
+    form(action='/login' method='post')
+      div.field
+        label='Введите логин'
+        input(type='text' name='username' required)
+      div.field
+        label='Введите пароль'
+        input(type='password' name='password' required)
+      div.button 
+        input(type='submit' value='Войти')
+    form(action='/registration' method='get')
+      div.button
+        input(type='submit' value='Регистрация')
